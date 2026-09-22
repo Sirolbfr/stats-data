@@ -40,11 +40,11 @@ Personne ne lit 613 lignes. Encore moins 31 000. Le premier travail d'un analyst
 
 Ce résumé s'appelle la **statistique descriptive**. Elle répond à trois questions, dans cet ordre :
 
-| Question | Famille d'indicateurs | Vu quand |
-|---|---|---|
-| « Ça vaut combien, **en gros** ? » | **Position** (moyenne, médiane, mode) | aujourd'hui |
-| « Est-ce que ça **varie** beaucoup ? » | **Dispersion** (écart-type, quartiles, étendue) | [demain](02-dispersion-et-pieges-de-la-moyenne.md) |
-| « Est-ce que ça **dépend** d'autre chose ? » | **Croisements** (TCD) | [mercredi](03-tableaux-croises-dynamiques.md) |
+| Question                                     | Famille d'indicateurs                           | Vu quand                                           |
+| -------------------------------------------- | ----------------------------------------------- | -------------------------------------------------- |
+| « Ça vaut combien, **en gros** ? »           | **Position** (moyenne, médiane, mode)           | aujourd'hui                                        |
+| « Est-ce que ça **varie** beaucoup ? »       | **Dispersion** (écart-type, quartiles, étendue) | [demain](02-dispersion-et-pieges-de-la-moyenne.md) |
+| « Est-ce que ça **dépend** d'autre chose ? » | **Croisements** (TCD)                           | [mercredi](03-tableaux-croises-dynamiques.md)      |
 
 > ⚠️ **La faute n°1 en entreprise** : s'arrêter à la première question. Un chiffre de position seul
 > est presque toujours trompeur. On ne le publie jamais sans un chiffre de dispersion à côté.
@@ -221,9 +221,7 @@ On peut empiler les critères — ils se cumulent avec un **ET** :
 =SOMME.SI.ENS(T_Ventes[Montant_TTC]; T_Ventes[Statut]; "Livrée") →   343 877 €
 ```
 
-**Deux tiers du « chiffre d'affaires » correspondent à des commandes annulées, retournées ou encore
-en cours.** Aucun des deux chiffres n'est faux : ils ne répondent pas à la même question. Mais si tu
-écris « CA 2025 : 1 029 700 € » sans préciser, tu trompes ton lecteur.
+**Deux tiers du « chiffre d'affaires » correspondent à des commandes annulées, retournées ou encore en cours.** Aucun des deux chiffres n'est faux : ils ne répondent pas à la même question. Mais si tu écris « CA 2025 : 1 029 700 € » sans préciser, tu trompes ton lecteur.
 
 > 📌 **Réflexe à installer dès maintenant** : avant tout calcul, écris noir sur blanc **sur quelles
 > lignes** il porte. Cette phrase ira dans ton livrable.
@@ -232,9 +230,7 @@ en cours.** Aucun des deux chiffres n'est faux : ils ne répondent pas à la mê
 
 ## 6. La moyenne pondérée
 
-« Note moyenne : 4,10 » — mais toutes les commandes pèsent-elles pareil ? Une réparation à 19 € et
-la flotte à 379 050 € comptent chacune pour une note. Si tu veux une note moyenne **pondérée par le
-chiffre d'affaires**, tu dois donner à chaque note un poids :
+« Note moyenne : 4,10 » — mais toutes les commandes pèsent-elles pareil ? Une réparation à 19 € et la flotte à 379 050 € comptent chacune pour une note. Si tu veux une note moyenne **pondérée par le chiffre d'affaires**, tu dois donner à chaque note un poids :
 
 $$\text{moyenne pondérée} = \frac{\sum (valeur_i \times poids_i)}{\sum poids_i}$$
 
@@ -245,17 +241,14 @@ En tableur, une seule fonction fait le numérateur :
 ```
 > `SOMMEPROD` = `SUMPRODUCT` : il multiplie les deux colonnes ligne à ligne, puis additionne.
 
-⚠️ Cette formule suppose qu'aucune note n'est vide (une cellule vide vaut 0 dans `SOMMEPROD`, ce qui
-fausse le résultat). Sur un vrai fichier, on restreint d'abord aux lignes notées.
+⚠️ Cette formule suppose qu'aucune note n'est vide (une cellule vide vaut 0 dans `SOMMEPROD`, ce qui fausse le résultat). Sur un vrai fichier, on restreint d'abord aux lignes notées.
 
 **Quand pondérer ?** Dès qu'additionner des unités de tailles différentes n'a pas de sens :
 
 - moyenne des prix de 8 magasins → chaque magasin compte pour 1, même celui qui fait 5 ventes ;
 - **moyenne pondérée par le nombre de ventes** → chaque *vente* compte pour 1.
 
-Tu retrouveras exactement ce piège vendredi, sur les communes : une commune de 300 habitants doit-elle
-peser autant qu'une ville de 230 000 dans le « revenu moyen du territoire » ? *(Réponse : non, et
-l'écart entre les deux calculs se chiffre.)*
+Tu retrouveras exactement ce piège vendredi, sur les communes : une commune de 300 habitants doit-elle peser autant qu'une ville de 230 000 dans le « revenu moyen du territoire » ? *(Réponse : non, et l'écart entre les deux calculs se chiffre.)*
 
 ---
 
@@ -293,13 +286,13 @@ l'écart entre les deux calculs se chiffre.)*
 
 Coche seulement si tu sais répondre **sans relire** :
 
-- [ ] Je sais dire, pour chaque colonne du fichier, si je peux en faire la moyenne — et pourquoi.
-- [ ] Je sais que `MOYENNE` ignore les cellules vides, et je vérifie combien de valeurs ont servi.
-- [ ] Je sais lire l'écart moyenne / médiane comme une information sur la forme de la distribution.
-- [ ] Je sais dire pourquoi le mode de `Montant_TTC` vaut 19 € alors que la moyenne vaut 1 680 €.
-- [ ] Je sais calculer une moyenne sur un sous-ensemble sans filtrer à la main.
-- [ ] Je précise toujours le **périmètre** de mes calculs.
-- [ ] Je sais expliquer à quoi sert une moyenne pondérée et donner un cas où elle change le résultat.
+- [x] Je sais dire, pour chaque colonne du fichier, si je peux en faire la moyenne — et pourquoi.
+- [x] Je sais que `MOYENNE` ignore les cellules vides, et je vérifie combien de valeurs ont servi.
+- [x] Je sais lire l'écart moyenne / médiane comme une information sur la forme de la distribution.
+- [x] Je sais dire pourquoi le mode de `Montant_TTC` vaut 19 € alors que la moyenne vaut 1 680 €.
+- [x] Je sais calculer une moyenne sur un sous-ensemble sans filtrer à la main.
+- [x] Je précise toujours le **périmètre** de mes calculs.
+- [x] Je sais expliquer à quoi sert une moyenne pondérée et donner un cas où elle change le résultat.
 
 ---
 
